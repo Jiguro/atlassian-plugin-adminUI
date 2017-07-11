@@ -20,5 +20,9 @@
 
         <context>adminUI</context>
     </web-resource>
-    
+
+    <!-- publish our component -->
+    <servlet name="adminUI" class="com.atlassian.plugins.tutorial.refapp.MyPluginServlet" key="test">
+        <url-pattern>/test</url-pattern>
+    </servlet>
 </atlassian-plugin>
