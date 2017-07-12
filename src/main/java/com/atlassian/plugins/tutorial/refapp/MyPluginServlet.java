@@ -14,11 +14,12 @@ public class MyPluginServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(MyPluginServlet.class);
 
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         LOG.info("Incoming request.");
 
         resp.setContentType("text/html");
-        resp.getWriter().write("<html><body>Hello! You did it.</body></html>");
+        resp.getWriter().write("<html><body>Hello World!</body></html>");
     }
 
 }
