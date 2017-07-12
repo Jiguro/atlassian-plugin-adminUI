@@ -5,6 +5,7 @@ import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.sal.api.auth.LoginUriProvider;
 import com.atlassian.sal.api.user.UserManager;
 import com.atlassian.sal.api.user.UserProfile;
+import com.atlassian.templaterenderer.TemplateRenderer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +29,14 @@ public class MyPluginServlet extends HttpServlet {
     @ComponentImport
     private final LoginUriProvider loginUriProvider;
 
+    @ComponentImport
+    private final TemplateRenderer templateRenderer;
+
     @Inject
-    public MyPluginServlet(final UserManager userManager, final LoginUriProvider loginUriProvider) {
+    public MyPluginServlet(final UserManager userManager, final LoginUriProvider loginUriProvider, final TemplateRenderer templateRenderer) {
         this.userManager = userManager;
         this.loginUriProvider = loginUriProvider;
+        this.templateRenderer = templateRenderer;
     }
 
     @Override
@@ -43,8 +48,8 @@ public class MyPluginServlet extends HttpServlet {
             redirectToLogin(req, resp);
             return;
         }
-        resp.setContentType("text/html");
-        resp.getWriter().write(String.format("<html><body>Hi again, %s! Looking good ^_^</body></html>", user.getFullName()));
+
+        templateRenderer.render("templates/admin.vm", resp.getWriter());
     }
 
     private void redirectToLogin(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
