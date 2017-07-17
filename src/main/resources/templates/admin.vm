@@ -1,3 +1,5 @@
+$webResourceManager.requireResource("com.atlassian.plugins.tutorial.refapp.adminUI:adminUI-resources")
+
 <html>
 <head>
     <title>My Admin</title>

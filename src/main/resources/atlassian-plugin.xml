@@ -15,7 +15,7 @@
     <!-- add our web resources -->
     <web-resource key="adminUI-resources" name="adminUI Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
+
         <resource type="download" name="adminUI.css" location="/css/adminUI.css"/>
         <resource type="download" name="adminUI.js" location="/js/adminUI.js"/>
         <resource type="download" name="images/" location="/images"/>
