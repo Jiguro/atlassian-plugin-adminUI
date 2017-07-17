@@ -6,6 +6,7 @@ Here are the SDK commands you'll use immediately:
                  - '--product <product name>' starts plugin with given Atlassian product
                  - '--version <version number>' starts given product with specified number
                  - '--http-port <port number>' starts application at given port
+                 - '-DskipTests=true' to skip unit tests
 * atlas-debug -- same as atlas-run, but allows a debugger to attach at port 5005
 * atlas-cli   -- after atlas-run or atlas-debug, opens a Maven command line window:
                  - 'pi' reinstalls the plugin into the running product instance

@@ -67,6 +67,20 @@
             <artifactId>slf4j-simple</artifactId>
         </dependency>
 
+        <!-- JIRA test dependencies -->
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-tests</artifactId>
+            <version>${jira.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-func-tests</artifactId>
+            <version>${jira.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- WIRED TEST RUNNER DEPENDENCIES -->
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
@@ -176,6 +190,7 @@
         <platform.version>3.0.0</platform.version>
         <refapp.version>3.3.6</refapp.version>
         <amps.version>6.2.11</amps.version>
+        <jira.version>7.4.1</jira.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
         <atlassian.spring.scanner.version>1.2.13</atlassian.spring.scanner.version>
 

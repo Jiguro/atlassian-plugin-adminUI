@@ -28,4 +28,9 @@ public class MyPluginComponentImpl implements MyPluginComponent {
         
         return "myComponent";
     }
+
+    @Override
+    public int addNumbers(final int x, final int y) {
+        return x + y;
+    }
 }
