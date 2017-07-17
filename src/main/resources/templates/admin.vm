@@ -4,14 +4,14 @@
     <meta name="decorator" content="atl.admin">
 </head>
 <body>
-<form id="admin" class="aui">
+<form id="admin" class="aui" action="" method="POST">
     <div class="field-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="text">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="text" #if($name) value="${name}" #end placeholder="Enter a name here.">
     </div>
     <div class="field-group">
-        <label for="age">Age</label>
-        <input type="text" id="age" name="age" class="text">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" class="text" #if($age) value="${age}" #end placeholder="Enter an age here.">
     </div>
     <div class="field-group">
         <input type="submit" value="Save" class="button">
