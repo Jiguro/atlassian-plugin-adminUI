@@ -6,7 +6,7 @@
         <java-version>1.8</java-version>
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
-        <param name="configure.url">/admin/plugins/adminui/configurePlugin.action</param>
+        <param name="configure.url">/plugins/servlet/test</param>
     </plugin-info>
 
     <!-- add our i18n resource -->
@@ -31,4 +31,11 @@
     <rest key="rest" path="/admin-ui" version="1.0">
         <description>Provides REST resources for the admin UI.</description>
     </rest>
+
+    <!-- Config link to Plugin under JIRA Administration -> Add-ons -->
+    <web-item key="admin-ui-menu-item" name="Admin UI" section="system.admin/globalsettings" application="jira" weight="10">
+        <description>Link to Admin UI page.</description>
+        <label key="adminUI.admin.title" />
+        <link linkId="admin-ui-link">/plugins/servlet/test</link>
+    </web-item>
 </atlassian-plugin>
