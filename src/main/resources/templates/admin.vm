@@ -1,22 +1,21 @@
-$webResourceManager.requireResource("com.atlassian.plugins.tutorial.refapp.adminUI:adminUI-resources")
-
 <html>
 <head>
-    <title>My Admin</title>
+    <title>$i18n.getText("adminUI.admin.title")</title>
     <meta name="decorator" content="atl.admin">
+    $webResourceManager.requireResource("com.atlassian.plugins.tutorial.refapp.adminUI:adminUI-resources")
 </head>
 <body>
 <form id="admin" class="aui" action="" method="POST">
     <div class="field-group">
-        <label for="name">Name:</label>
+        <label for="name">$i18n.getText("adminUI.admin.name.label")</label>
         <input type="text" id="name" name="name" class="text" #if($name) value="${name}" #end placeholder="Enter a name here.">
     </div>
     <div class="field-group">
-        <label for="age">Age:</label>
+        <label for="age">$i18n.getText("adminUI.admin.age.label")</label>
         <input type="text" id="age" name="age" class="text" #if($age) value="${age}" #end placeholder="Enter an age here.">
     </div>
     <div class="field-group">
-        <input type="submit" value="Save" class="button">
+        <input type="submit" value="$i18n.getText("adminUI.admin.save.label")" class="button">
     </div>
 </form>
 </body>

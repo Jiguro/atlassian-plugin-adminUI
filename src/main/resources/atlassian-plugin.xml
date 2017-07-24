@@ -27,4 +27,8 @@
     <servlet name="adminUI" class="com.atlassian.plugins.tutorial.refapp.MyPluginServlet" key="test">
         <url-pattern>/test</url-pattern>
     </servlet>
+
+    <rest key="rest" path="/admin-ui" version="1.0">
+        <description>Provides REST resources for the admin UI.</description>
+    </rest>
 </atlassian-plugin>

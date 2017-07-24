@@ -26,7 +26,7 @@ import java.util.Map;
 @Scanned
 public class MyPluginServlet extends HttpServlet {
 
-    private static final String PLUGIN_STORAGE_KEY = "com.atlassian.plugins.tutorial.refapp.adminui";
+    static final String PLUGIN_STORAGE_KEY = "com.atlassian.plugins.tutorial.refapp.adminui";
 
     private static final Logger LOG = LoggerFactory.getLogger(MyPluginServlet.class);
 

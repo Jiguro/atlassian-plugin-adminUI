@@ -18,7 +18,7 @@
 
 _atlas-debug --product jira --version 7.4.1 --http-port 2991_
 
-_atlas-run-standalone --product confluence --jvmargs '-Dserver.compression.mime-types=text/html,text/css -Dspring.http.encoding.charset=UTF-8'_
+_atlas-run-standalone --product confluence --jvmargs "-Datlassian.webresource.disable.minification=false -Dplugin.webresource.batching.off=true"
 
 Full documentation is always available at:
 
