@@ -18,8 +18,14 @@
 
 _atlas-debug --product jira --version 7.4.1 --http-port 2991_
 
-_atlas-run-standalone --product confluence --jvmargs "-Datlassian.webresource.disable.minification=false -Dplugin.webresource.batching.off=true"
+_atlas-run-standalone --product confluence --jvmargs "-Datlassian.webresource.disable.minification=false -Dplugin.webresource.batching.off=true"_
 
 Full documentation is always available at:
-
 https://developer.atlassian.com/display/DOCS/Introduction+to+the+Atlassian+Plugin+SDK
+
+
+### Miscellaneous:
+``` 
+netstat –aon | find "<port number>"
+taskkill /F /pid <process ID>
+```
