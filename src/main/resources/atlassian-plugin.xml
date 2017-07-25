@@ -38,4 +38,9 @@
         <label key="adminUI.admin.title" />
         <link linkId="admin-ui-link">/plugins/servlet/test</link>
     </web-item>
+
+    <ao key="ao-module">
+        <description>The module configuring the Active Objects service used by this plugin</description>
+        <entity>com.atlassian.plugins.tutorial.refapp.domain.entity.Person</entity>
+    </ao>
 </atlassian-plugin>
