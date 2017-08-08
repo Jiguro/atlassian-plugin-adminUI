@@ -2,7 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {TreeviewModule} from 'ngx-treeview';
+import {TreeviewI18n, TreeviewModule} from 'ngx-treeview';
+import {TreeviewI18nImpl} from './TreeViewI18nImpl';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {TreeviewModule} from 'ngx-treeview';
     TreeviewModule.forRoot(),
     BrowserModule
   ],
-  providers: [],
+  providers: [{provide: TreeviewI18n, useClass: TreeviewI18nImpl}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
