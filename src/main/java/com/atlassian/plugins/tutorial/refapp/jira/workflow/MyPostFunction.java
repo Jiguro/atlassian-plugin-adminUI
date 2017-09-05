@@ -1,53 +1,44 @@
 package com.atlassian.plugins.tutorial.refapp.jira.workflow;
 
 import com.atlassian.jira.component.ComponentAccessor;
-import com.atlassian.jira.issue.CustomFieldManager;
 import com.atlassian.jira.issue.MutableIssue;
-import com.atlassian.jira.issue.watchers.WatcherManager;
-import com.atlassian.jira.security.JiraAuthenticationContext;
-import com.atlassian.jira.security.roles.ProjectRoleManager;
+import com.atlassian.jira.issue.comments.CommentManager;
 import com.atlassian.jira.user.ApplicationUser;
-import com.atlassian.jira.user.util.UserUtil;
 import com.atlassian.jira.workflow.function.issue.AbstractJiraFunctionProvider;
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.opensymphony.module.propertyset.PropertySet;
 import com.opensymphony.workflow.WorkflowException;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Map;
 
 @Named("MyPostFunction")
 public class MyPostFunction extends AbstractJiraFunctionProvider {
 
-    @ComponentImport
-    private final CustomFieldManager customFieldManager;
-    @ComponentImport
-    private final JiraAuthenticationContext authContext;
-    @ComponentImport
-    private final UserUtil userUtil;
-    @ComponentImport
-    private final ProjectRoleManager projectRoleManager;
+    private final Client restClient;
 
-    @Inject
-    public MyPostFunction(final CustomFieldManager customFieldManager,
-                          final JiraAuthenticationContext authContext, final UserUtil userUtil,
-                          final ProjectRoleManager projectRoleManager) {
-        this.customFieldManager = customFieldManager;
-        this.authContext = authContext;
-        this.userUtil = userUtil;
-        this.projectRoleManager = projectRoleManager;
+    public MyPostFunction() {
+        restClient = Client.create();
     }
 
     @Override
     public void execute(final Map transientVars, final Map args, final PropertySet ps) throws WorkflowException {
-        addWatcher(getIssue(transientVars), ComponentAccessor.getUserManager().getUser(args.get("user").toString()));
+        invokeRequest(getIssue(transientVars), ComponentAccessor.getUserManager().getUser(args.get("user").toString()));
     }
 
 
-    private void addWatcher(final MutableIssue issue, final ApplicationUser user) {
-        final WatcherManager watcherManager = ComponentAccessor.getWatcherManager();
-        watcherManager.startWatching(user, issue);
+    private void invokeRequest(final MutableIssue issue, final ApplicationUser user) {
+        final WebResource webResource = restClient.resource("http://requestb.in/x389jqx3?inspect").queryParam("user", user.getDisplayName());
+        final ClientResponse response = webResource.get(ClientResponse.class);
+
+        final CommentManager commentManager = ComponentAccessor.getCommentManager();
+        commentManager.create(
+                issue,
+                user,
+                String.format("GET request to %s has result %s", webResource.getURI(), response.getStatus()),
+                false);
     }
 
 }
