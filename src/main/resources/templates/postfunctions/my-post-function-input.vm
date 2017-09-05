@@ -1,0 +1,14 @@
+<tr bgcolor="#ffffff">
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Application User:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap>
+        <select name="user" id="user">
+            #foreach ($field in $users)
+                <option value="$field.name">$field.name</option>
+            #end
+        </select>
+        <br><font size="1">Select the Project Role to be set as Watcher</font>
+    </td>
+
+</tr>

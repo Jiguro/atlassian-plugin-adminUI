@@ -2,7 +2,7 @@
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
         <java-version>1.8</java-version>
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
@@ -11,7 +11,7 @@
 
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="adminUI"/>
-    
+
     <!-- add our web resources -->
     <web-resource key="adminUI-resources" name="adminUI Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
@@ -35,7 +35,16 @@
     <!-- Config link to Plugin under JIRA Administration -> Add-ons -->
     <web-item key="admin-ui-menu-item" name="Admin UI" section="system.admin/globalsettings" application="jira" weight="10">
         <description>Link to Admin UI page.</description>
-        <label key="adminUI.admin.title" />
+        <label key="adminUI.admin.title"/>
         <link linkId="admin-ui-link">/plugins/servlet/test</link>
     </web-item>
+
+    <workflow-function key="my-post-function" name="My Post Function" i18n-name-key="my-post-function.name"
+                       class="com.atlassian.plugins.tutorial.refapp.jira.workflow.MyPostFunctionFactory">
+        <description key="my-post-function.description">The My Post Function Plugin</description>
+        <function-class>com.atlassian.plugins.tutorial.refapp.jira.workflow.MyPostFunction</function-class>
+        <resource type="velocity" name="view" location="templates/postfunctions/my-post-function.vm"/>
+        <resource type="velocity" name="input-parameters" location="templates/postfunctions/my-post-function-input.vm"/>
+        <resource type="velocity" name="edit-parameters" location="templates/postfunctions/my-post-function-input.vm"/>
+    </workflow-function>
 </atlassian-plugin>
